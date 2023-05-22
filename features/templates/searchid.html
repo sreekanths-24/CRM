@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if searchedid %}
+<h1 id="gjkaegryuw">Search results for "{{ searchedid }}"</h1>
+
+<!-- <h1> Records </h1> -->
+<div class="table-resp">
+<table class="table table-striped table-hover table-bordered">
+	<thead class="table-dark">
+		<tr>
+			<!-- <th scope="col">S.No.</th> -->
+			<th scope="col">Order Id</th>
+			<th scope="col">Product</th>
+			<th scope="col">Quantity</th>
+			<th scope="col">Time of purchace</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		{% for items in recordresults %}
+		<tr>
+			{% if items.order %}
+			<!-- <td>{{ forloop.counter }}</td> -->
+			<td>{{ items.order }}</td>
+			<td>{{ items.product }}</td>
+			<td>{{ items.quantity }}</td>
+			<td>{{ items.date_added }}</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+
+
+	</tbody>
+</table>
+
+<a href="{% url 'ecommorderdata' %}" class="btn btn-secondary">Back</a>
+</div>
+
+{% else %}
+<h1>Click on the search bar above and search for something!!</h1>
+{% endif %}
+
+
+
+{% endblock %}

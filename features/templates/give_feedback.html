@@ -1,0 +1,24 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<h1>Send Us Your Feedbacks</h1>
+<br>
+	<form method="POST" action=".">
+        {% csrf_token %}
+
+        
+	<div class="mb-3">
+		<input type="text" class="form-control" name="yourname" placeholder="Your Name" required>
+	</div>
+    <div class="mb-3">
+        <input type="email" class="form-control" name="youremail" placeholder="Your Email" required>
+    </div>
+	<div class="mb-3">
+        <textarea name="userfeedbacktake" placeholder="Your Reply" required id="suher"></textarea>
+                    
+	</div>
+	<br/>
+	<button type="submit" class="btn btn-secondary">Submit</button>
+    <a href="{% url 'store' %}" class="btn btn-warning">Back</a>    
+</form>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-6 offset-3">
+    <h1>Add Supplier</h1>
+
+    <form method="POST" action="{% url 'add_supplier_record' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Add Supplier Record</button>
+        <a href="{% url 'supplierrecords' %}" class="btn btn-secondary">Back</a>
+    
+    </form>
+</div>
+{% endblock %}
