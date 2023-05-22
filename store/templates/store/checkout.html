@@ -46,7 +46,7 @@
 			<div class="box-element hidden" id="payment-info">
 				<small>Payment Options</small>
 				<br>
-				<button class="btn btn-secondary w-100" id="make-payment">Make payment</button>
+				<button class="btn btn-secondary w-100" id="make-payment">Cash On Delivery</button>
 				<div id="paypal-button-container"></div>
 			</div>
 			
@@ -189,7 +189,7 @@
 	    	.then((response) => response.json())
 	    	.then((data) => {
 				console.log('Success:', data);
-				alert('Transaction completed');  
+				alert('Your Order Has Been Placed');  
 
 				cart = {}
 				document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
