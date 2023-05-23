@@ -108,7 +108,7 @@ $ python -m pip install Pillow
 
 **5. Clone this project**
 ```
-$  git clone https://github.com/Your-username-here/crm-fcc.git
+$  git clone https://github.com/Your-username-here/CRM.git
 ```
 
 Then, Enter the project
