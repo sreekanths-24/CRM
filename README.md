@@ -98,7 +98,12 @@ https://github.com/sreekanths-24/crm-fcc
 
 on the top right side you will see the 'fork' button, click it and give your forked repository a name.
 
-**4. Clone this project**
+**4. install Pillow library**
+```
+$ python -m pip install Pillow 
+```
+
+**5. Clone this project**
 ```
 $  git clone https://github.com/Your-username-here/crm-fcc.git
 ```
