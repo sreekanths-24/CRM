@@ -98,7 +98,10 @@ https://github.com/sreekanths-24/crm-fcc
 
 on the top right side you will see the 'fork' button, click it and give your forked repository a name.
 
-**4. install Pillow library**
+**4. install required libraries**
+```
+$ python -m pip install django 
+```
 ```
 $ python -m pip install Pillow 
 ```
