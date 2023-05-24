@@ -98,9 +98,17 @@ https://github.com/sreekanths-24/crm-fcc
 
 on the top right side you will see the 'fork' button, click it and give your forked repository a name.
 
-**4. Clone this project**
+**4. install required libraries**
 ```
-$  git clone https://github.com/Your-username-here/crm-fcc.git
+$ python -m pip install django 
+```
+```
+$ python -m pip install Pillow 
+```
+
+**5. Clone this project**
+```
+$  git clone https://github.com/Your-username-here/CRM.git
 ```
 
 Then, Enter the project
