@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
 from mainpart.models import Record
-from store.models import ShippingAddress
 from store.models import *
 from django.db.models import Q
 from .forms import AddSupplierRecord
@@ -113,4 +112,17 @@ def update_supplier(request, pk):
 	else:
 		messages.success(request, "You need to login first")
 		return redirect('home_crm')
+	
+def dashboard(request):
+	totalfeedbacks = FeedbackTable.objects.all()
+	totalcustomers = ShippingAddress.objects.all()
+	totalproducts = Product.objects.all()
+	totalsuppliers = SupplierRecord.objects.all()
+	context = {
+		'totalfeedbacks':totalfeedbacks,
+		'totalcustomers':totalcustomers,
+		'totalproducts':totalproducts,
+		'totalsuppliers':totalsuppliers,
+	}
+	return render(request, 'dashboard.html', context)
 		

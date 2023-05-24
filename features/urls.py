@@ -14,4 +14,5 @@ urlpatterns = [
     path('delete_supplier/<int:pk>', views.delete_supplier, name='delete_supplier'),
     path('update_supplier/<int:pk>', views.update_supplier, name='update_supplier'),
     path('add_supplier_record', views.add_supplier_record, name='add_supplier_record'),
+    path('dashboard', views.dashboard, name='dashboard'),
 ]

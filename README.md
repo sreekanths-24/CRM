@@ -113,7 +113,7 @@ $  git clone https://github.com/Your-username-here/CRM.git
 
 Then, Enter the project
 ```
-$  cd crm-fcc
+$  cd CRM
 ```
 
 ---
@@ -133,7 +133,7 @@ $  git commit -am "short description of your changes"
 ```
 - Push your changes 
 ```
-$  git push origin main
+$  git push origin master
 ```
 
 ---
