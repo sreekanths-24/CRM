@@ -1,0 +1,81 @@
+{% extends 'store/main.html' %}
+{% block content %}
+	<div class="row">
+        <div class="col">
+            <form class="d-flex" role="search" method="GET">
+                {% csrf_token %}
+        
+                <input class="form-control mx-2" type="search" placeholder="Enter Your Email" aria-label="Search" name="q1">
+                <button class="btn btn-secondary" type="submit">Search</button>
+            </form>
+            <br>
+            {% if emailid %}
+            <div class="table-resp">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Order Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Created Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for record in emailid %}
+                        <tr>
+                            <td>{{ record.order.id }}</td>
+                            <td>{{ record.customer.name }}</td>
+                            <td>{{ record.customer.email }}</td>
+                            <td>{{ record.date_added }}</td>
+                        </tr>
+                        {% endfor %}
+                
+                
+                    </tbody>
+                </table>	  
+                <a href="{% url 'previous_order' %}" class="btn btn-secondary">Back</a>
+                
+                </div>
+            {% endif %}
+        </div>
+        <div class="col">
+            <form class="d-flex" role="search" method="GET" action="">
+                {% csrf_token %}
+        
+                <input class="form-control mx-2" type="search" placeholder="Put your order ID here" aria-label="Search" name="q2">
+                <button class="btn btn-secondary" type="submit">Search</button>
+            </form>
+            <br>
+            {% if orderid %}
+            <div class="table-resp">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Order Id</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Created Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for record in orderid %}
+                        <tr>
+                            <td>{{ record.order }}</td>
+                            <td>{{ record.product }}</td>
+                            <td>{{ record.quantity }}</td>
+                            <td>{{ record.date_added }}</td>
+                        </tr>
+                        {% endfor %}
+                
+                
+                    </tbody>
+                </table>	  
+                <a href="{% url 'previous_order' %}" class="btn btn-secondary">Back</a>
+                
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

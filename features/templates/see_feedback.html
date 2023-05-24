@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
+{% if user.is_authenticated %}
+
 <h1>Feedbacks</h1>
 {% for feedbacks in feedback_list %}
 <br>
@@ -15,4 +16,8 @@
 </div>
 {% endfor %}
 <br>
+
+{% else %}
+<h1>Log In first to see feedbacks</h1>
+{% endif %}
 {% endblock content %}

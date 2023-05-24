@@ -4,6 +4,8 @@ import json
 import datetime
 from .models import * 
 from .utils import cookieCart, cartData, guestOrder
+from django.db.models import Q
+
 
 def store(request):
 	data = cartData(request)
@@ -90,3 +92,16 @@ def processOrder(request):
 		)
 
 	return JsonResponse('Order submitted..', safe=False)
+
+def previous_order(request):
+	if 'q1' in request.GET:
+		q1 = request.GET['q1']
+		multiq= Q(Q(customer__email__icontains=q1))
+		emailid = ShippingAddress.objects.filter(multiq)
+		return render(request, 'store/previous_purchase.html', {'emailid':emailid})
+	elif 'q2' in request.GET:
+		q2 = request.GET['q2']
+		orderid = OrderItem.objects.filter(order__id__icontains=q2)
+		return render(request, 'store/previous_purchase.html', {'orderid':orderid})
+	else:
+		return render(request, 'store/previous_purchase.html')

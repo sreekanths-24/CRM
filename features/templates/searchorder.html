@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
 
 {% if searchedorder %}
 <h1 id="gjkaegryuw">Search results for "{{ searchedorder }}"</h1>
@@ -46,6 +47,9 @@
 <h1>Click on the search bar above and search for something!!</h1>
 {% endif %}
 
+{% else %}
+<h1>Log In first to search data</h1>
+{% endif %}
 
 
 {% endblock %}
