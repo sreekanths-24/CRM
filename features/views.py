@@ -5,6 +5,8 @@ from mainpart.models import Record
 from store.models import *
 from django.db.models import Q
 from .forms import AddSupplierRecord
+from django.db.models import Sum
+
 # Create your views here.
 def sendfeedback(request):
 	if request.method == "POST":
@@ -118,11 +120,22 @@ def dashboard(request):
 	totalcustomers = ShippingAddress.objects.all()
 	totalproducts = Product.objects.all()
 	totalsuppliers = SupplierRecord.objects.all()
+
+	order_items = OrderItem.objects.values('product__name').annotate(total_quantity=Sum('quantity'))
+	product_quantities = {item['product__name']: item['total_quantity'] for item in order_items}
+    
+	product_names = list(product_quantities.keys())
+	product_totals = list(product_quantities.values())
+
 	context = {
 		'totalfeedbacks':totalfeedbacks,
 		'totalcustomers':totalcustomers,
 		'totalproducts':totalproducts,
 		'totalsuppliers':totalsuppliers,
+		'product_names': product_names,
+        'product_totals': product_totals,
 	}
 	return render(request, 'dashboard.html', context)
+
+
 		
