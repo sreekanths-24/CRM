@@ -56,14 +56,7 @@
         
         {% endif %}
       </ul>
-      {% if user.is_authenticated %}
-      <form class="d-flex" role="search" method="POST" action="{% url 'searchdata' %}">
-        {% csrf_token %}
 
-        <input class="form-control me-2" type="search" placeholder="Search Records" aria-label="Search" name="searcheddata">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
-      </form>
-      {% endif %}
     </div>
   </div>
 </nav>
