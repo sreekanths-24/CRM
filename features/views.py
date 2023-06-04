@@ -16,7 +16,7 @@ def sendfeedback(request):
 		#print(f'name = {name} email = {email} feedback = {feedback}')
 		obj = FeedbackTable(name=name, email=email, feedback=feedback)
 		obj.save()
-		messages.success(request, "feedback submitted sucessfully")
+		# messages.success(request, "feedback submitted sucessfully")
 		return redirect('store')
 	return render(request, 'give_feedback.html')
 
