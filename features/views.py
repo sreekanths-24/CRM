@@ -121,8 +121,9 @@ def dashboard(request):
 	totalproducts = Product.objects.all()
 	totalsuppliers = SupplierRecord.objects.all()
 
-	order_items = OrderItem.objects.values('product__name').annotate(total_quantity=Sum('quantity'))
+	order_items = OrderItem.objects.exclude(product__isnull=True).values('product__name').annotate(total_quantity=Sum('quantity'))
 	product_quantities = {item['product__name']: item['total_quantity'] for item in order_items}
+
     
 	product_names = list(product_quantities.keys())
 	product_totals = list(product_quantities.values())
