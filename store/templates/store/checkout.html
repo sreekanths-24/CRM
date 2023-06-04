@@ -35,6 +35,9 @@
 						<div class="form-field">
 							<input class="form-control" type="text" name="country" placeholder="Country">
 						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="phone" placeholder="Phone">
+						</div>
 					</div>
 
 					<hr>
@@ -159,6 +162,8 @@
 				'city':null,
 				'state':null,
 				'zipcode':null,
+				'country':null,
+				'phone':null,
 			}
 
 			if (shipping != 'False'){
@@ -166,6 +171,8 @@
 		    	shippingInfo.city = form.city.value
 		    	shippingInfo.state = form.state.value
 		    	shippingInfo.zipcode = form.zipcode.value
+		    	shippingInfo.country = form.country.value
+		    	shippingInfo.phone = form.phone.value
 	    	}
 
 	    	if (user == 'AnonymousUser'){

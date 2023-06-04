@@ -89,6 +89,8 @@ def processOrder(request):
 		city=data['shipping']['city'],
 		state=data['shipping']['state'],
 		zipcode=data['shipping']['zipcode'],
+		country=data['shipping']['country'],
+		phone=data['shipping']['phone'],
 		)
 
 	return JsonResponse('Order submitted..', safe=False)
