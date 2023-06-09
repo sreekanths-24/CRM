@@ -30,10 +30,18 @@
 		{% for items in ecommorders %}
 		<tr>
 			{% if items.order %}
+			{% if items.order.id in order_id_list %}
+			<td class="bg-secondary" style="color: white;">{{ items.order }}</td>
+			<td class="bg-secondary" style="color: white;">{{ items.product }}</td>
+			<td class="bg-secondary" style="color: white;">{{ items.quantity }}</td>
+			<td class="bg-secondary" style="color: white;">{{ items.date_added }}</td>
+			{% else %}
 			<td>{{ items.order }}</td>
 			<td>{{ items.product }}</td>
 			<td>{{ items.quantity }}</td>
 			<td>{{ items.date_added }}</td>
+			{% endif %}
+			
 			{% endif %}
 		</tr>
 		{% endfor %}

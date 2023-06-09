@@ -21,3 +21,10 @@ class SupplierRecord(models.Model):
 
     def __str__(self):
         return self.name
+    
+class delivery(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    order_id = models.IntegerField()
+
+    def __str__(self):
+        return str(self.order_id)

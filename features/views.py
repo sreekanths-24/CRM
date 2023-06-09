@@ -59,12 +59,18 @@ def searchid(request):
 		return render(request, 'searchid.html', {})	
 	
 def ecommdata(request):
+	order_ids = delivery.objects.values_list('order_id', flat=True).distinct()
+	order_id_list = list(order_ids)
+    
 	ecommshippingdata = ShippingAddress.objects.order_by('-date_added')
-	return render(request, 'ecommdata.html', { 'ecommshippingdata':ecommshippingdata})
+	return render(request, 'ecommdata.html', { 'ecommshippingdata':ecommshippingdata,'order_id_list':order_id_list})
 
 def ecommorderdata(request):
+	order_ids = delivery.objects.values_list('order_id', flat=True).distinct()
+	order_id_list = list(order_ids)
+    
 	ecommorders = OrderItem.objects.order_by('-date_added')
-	return render(request, 'ecommorder.html', {'ecommorders':ecommorders})
+	return render(request, 'ecommorder.html', {'order_id_list':order_id_list, 'ecommorders':ecommorders})
 
 def supplierrecords(request):
 	supplier_list = SupplierRecord.objects.order_by('-created_at')
@@ -120,6 +126,8 @@ def dashboard(request):
 	totalcustomers = ShippingAddress.objects.all()
 	totalproducts = Product.objects.all()
 	totalsuppliers = SupplierRecord.objects.all()
+	alldeliveries = delivery.objects.all()
+
 
 	order_items = OrderItem.objects.exclude(product__isnull=True).values('product__name').annotate(total_quantity=Sum('quantity'))
 	product_quantities = {item['product__name']: item['total_quantity'] for item in order_items}
@@ -135,8 +143,23 @@ def dashboard(request):
 		'totalsuppliers':totalsuppliers,
 		'product_names': product_names,
         'product_totals': product_totals,
+        'alldeliveries': alldeliveries,
 	}
 	return render(request, 'dashboard.html', context)
 
 
-		
+def confirmdelivery(request):    
+	alldeliveries = delivery.objects.order_by('-created_at')
+	order_ids = delivery.objects.values_list('order_id', flat=True).distinct()
+	order_id_list = list(order_ids)
+
+	if request.method == "POST":
+		order_id = request.POST.get("newdelivery")
+		if int(order_id) in order_id_list:
+			messages.warning(request, f"Order {order_id} is already in the delivered list.")
+		else:
+			obj = delivery(order_id=order_id)
+			obj.save()
+			messages.success(request, f"Order {order_id} added to the delivered list!")
+        # return redirect('dashboard')
+	return render(request, 'delivery.html', {'alldeliveries': alldeliveries})

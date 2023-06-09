@@ -34,6 +34,18 @@
 		
 		{% for record in ecommshippingdata %}
 		<tr>
+			{% if record.order.id in order_id_list %}
+			<td class="bg-secondary" style="color: white;">{{ record.order.id }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.customer.name }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.customer.email }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.address }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.city }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.state }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.zipcode }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.country }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.phone }}</td>
+			<td class="bg-secondary" style="color: white;">{{ record.date_added }}</td>
+			{% else %}
 			<td>{{ record.order.id }}</td>
 			<td>{{ record.customer.name }}</td>
 			<td>{{ record.customer.email }}</td>
@@ -44,6 +56,7 @@
 			<td>{{ record.country }}</td>
 			<td>{{ record.phone }}</td>
 			<td>{{ record.date_added }}</td>
+			{% endif %}
 		</tr>
 		{% endfor %}
 
