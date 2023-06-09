@@ -17,7 +17,7 @@ def home(request):
         if user is not None:
             login(request, user)
             messages.success(request, "You have been logged in!")
-            return redirect('home_crm')
+            return redirect('dashboard')
         else:
             messages.success(request, "Incorrect username or password, Please try again.")
             return redirect('home_crm')

@@ -1,6 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
+
+<div class="row" id="ajshgf" style="margin: 0 auto;">
+
+    <h1 class="mb-5">Products Purchase Graph</h1>
+    <br><br>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: {{product_names|safe}} ,
+            datasets: [{
+              label: 'Total Purchases',
+              data: {{product_totals|safe}},
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+      
+      
+</div>
+<br>
 <h1 style="text-align: center;">Dashboard</h1>
 <br>
 <div style="text-align: center;" class="row gap-2">
@@ -130,41 +167,6 @@
 
 </div>
 
-<div class="row" id="ajshgf" style="margin: 0 auto;">
-
-    <h1 class="my-5">Products Purchase Graph</h1>
-    <br><br>
-    <div>
-        <canvas id="myChart"></canvas>
-    </div>
-      
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      
-      <script>
-        const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            labels: {{product_names|safe}} ,
-            datasets: [{
-              label: 'Total Purchases',
-              data: {{product_totals|safe}},
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      </script>
-      
-      
-</div>
 <br><br><br>
 {% endif %} 
 
