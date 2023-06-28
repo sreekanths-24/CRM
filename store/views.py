@@ -14,8 +14,15 @@ def store(request):
 	order = data['order']
 	items = data['items']
 
-	products = Product.objects.all()
-	context = {'products':products, 'cartItems':cartItems}
+	if 'qp' in request.GET:
+		qp = request.GET['qp']
+		products = Product.objects.filter(Q(name__icontains=qp) | Q(description__icontains=qp))
+	else:
+		products = Product.objects.all()
+	context = {
+		'products':products, 
+		'cartItems':cartItems
+	}
 	return render(request, 'store/store.html', context)
 
 
