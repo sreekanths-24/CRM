@@ -24,8 +24,8 @@ SECRET_KEY = 'z+ksf@)0d^qojbh4rnp4b1to$hq&*tt(3bs$gf(3i267g$k9ln'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['.vercel.app']
+#.vercel.app
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1:8000']
 
 
 # Application definition
@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'qZvDX1dQSAF3UJI7rhBA',
+        'HOST': 'containers-us-west-65.railway.app',
+        'PORT': '5848',
     }
 }
 
@@ -125,6 +129,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'staticfiles_build', 'static')
 
 MEDIA_URL = '/images/'
 

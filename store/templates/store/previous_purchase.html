@@ -4,18 +4,19 @@
         <div class="col">
             <form class="d-flex" role="search" method="GET">
                 {% csrf_token %}
-                <input class="form-control mx-2" type="search" placeholder="Enter Your Email Id Here To View Your Previous Purchases" aria-label="Search" name="q1">
+                <input class="form-control mx-2" type="email" placeholder="Enter Your Email Id Here To View Your Previous Purchases" aria-label="Search" name="q1">
                 <button class="btn btn-secondary" type="submit">Search</button>
             </form>
             <br>
             {% if q1 %}
             {% if emailid %}
-                <h4>Previous purchases of {{q1}}</h4>
+                <h4>Results for {{q1}}</h4>
                 <div class="table-resp">
                     <table class="table table-striped table-hover table-bordered">
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">Order ID</th>
+                                <th scope="col">Purchased by</th>
                                 <th scope="col">Product</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Ordered At</th>
@@ -25,9 +26,11 @@
                             {% for record in emailid %}
                                 <tr>
                                     <td>{{ record.order.id }}</td>
+                                    <td>{{ record.order.customer.name }}</td>
                                     <td>{{ record.product.name }}</td>
                                     <td>{{ record.quantity }}</td>
                                     <td>{{ record.date_added }}</td>
+
                                 </tr>
                             {% endfor %}
                         </tbody>
