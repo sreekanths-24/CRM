@@ -5,6 +5,7 @@
 1. [Technologies used](#technologies-used)
 1. [How to install and setup this project in your system](#how-to-install-and-setup-this-project-in-your-system)
 1. [How to contribute](#how-to-contribute)
+1. [Live Demo](#live-demo)
 
 ---
 
@@ -26,7 +27,7 @@ Customer Relationship Management (CRM) system is a software solution designed to
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 ### Database
-![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
 ### Text Editor
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
@@ -37,6 +38,9 @@ Customer Relationship Management (CRM) system is a software solution designed to
 ### Version Control and Open Source
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+### Backend server
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
 
 ---
@@ -137,5 +141,17 @@ $  git push origin master
 ```
 
 ---
+
+# Live Demo
+
+Ecommerce website :- https://ecomm-crm.vercel.app/
+<br>
+CRM :- https://ecomm-crm.vercel.app/crm
+<br>
+login :- 
+<br>
+username = admin 
+<br>
+password = qwerty123
 
 # Thank You
