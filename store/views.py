@@ -7,7 +7,7 @@ from .utils import cookieCart, cartData, guestOrder
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from features.models import FeedbackTable
-
+from django.db.models import Count
 
 def store(request):
 	data = cartData(request)
@@ -115,8 +115,11 @@ def previous_order(request):
 def review(request, pk):
     product = get_object_or_404(Product, pk=pk)
     feedback_list = FeedbackTable.objects.filter(product=product.name)
+    feedback_count = feedback_list.count()  # Count the number of feedbacks
     context = {
+        'product': product,
         'feedback_list': feedback_list,
+        'feedback_count': feedback_count,
     }
     return render(request, 'store/reviews.html', context)
 # def previous_order(request):
