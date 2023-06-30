@@ -1,26 +1,61 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-	<div class="row">
-		{% for product in products %}
-		<div class="col-lg-4">
-			<img class="thumbnail" src="{{product.imageURL}}">
-			<div class="box-element product">
-				<h6><strong>{{product.name}}</strong></h6>
-				<p>{{product.description}}</p>
-				<hr>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{ product.imageURL }}">
+            <div class="box-element product">
+                <h6><strong>{{ product.name }}</strong></h6>
+                <p id="description_{{ product.id }}" style="display: none;">{{ product.description }}</p>
+                <hr>
 
-				<a href="#" class="btn btn-outline-primary">Add to Wishlist</a>
-				<a href="#" class="btn btn-outline-dark">View</a>
-				<a href="{% url 'review' pk=product.pk %}" class="btn btn-outline-info">Reviews</a>
-				<hr>
-				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-				<a href="#" class="btn btn-outline-success">Buy now</a>
-				<h4 style="float: right;"><strong>Rs {{product.price}}</strong></h4>
+                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-primary add-btn update-cart">Add to Wishlist</button>
+                <a href="#" onclick="toggleDescription('{{ product.id }}')" class="btn btn-outline-dark">View</a>
+                <a href="{% url 'review' pk=product.pk %}" class="btn btn-outline-info">Reviews</a>
+                <hr>
+                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-success add-btn update-cart">Buy Now</button>
+                <!-- <a href="{% url 'checkout' %}" onclick="buyNow('{{ product.id }}')" class="btn btn-outline-success add-btn">Buy now</a> -->
+                <h4 style="float: right;"><strong>Rs {{ product.price }}</strong></h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
-			</div>
-		</div>
-		{% endfor %}
-	</div>
+    <script>
+        function toggleDescription(productId) {
+            var description = document.getElementById("description_" + productId);
+            if (description.style.display === "none") {
+                description.style.display = "block";
+            } else {
+                description.style.display = "none";
+            }
+        }
 
+		// function buyNow(productId) {
+		// 	// Send an AJAX request to add the product to the cart
+		// 	var xhr = new XMLHttpRequest();
+		// 	xhr.open("POST", "{% url 'update_item' %}", true);
+		// 	xhr.setRequestHeader("Content-Type", "application/json");
+		// 	xhr.onreadystatechange = function () {
+		// 		if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+		// 			// Redirect to the checkout page only if the product was successfully added to the cart
+		// 			var response = JSON.parse(xhr.responseText);
+		// 			if (response.status === "success") {
+		// 				window.location.href = "{% url 'checkout' %}";
+		// 			} else {
+		// 				console.error("Failed to add the product to the cart.");
+		// 			}
+		// 		}
+		// 	};
+		// 	var data = JSON.stringify({
+		// 		productId: productId,
+		// 		action: "add",
+		// 	});
+		// 	xhr.send(data);
+		// }
+	</script>
+	
+	
 {% endblock content %}
