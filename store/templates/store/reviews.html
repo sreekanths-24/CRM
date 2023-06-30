@@ -1,7 +1,23 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<h4>Reviews for {{ product.name }} ({{ feedback_count }})</h4>
+<div class="card mb-3" style="max-width: 900px; margin: 0 auto;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img class="thumbnail" src="{{ product.imageURL }}">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text">Rs {{ product.price }}</p>
+        <a href="{% url 'store' %}" class="btn btn-outline-secondary">Back</a>
+        <a href="{% url 'sendfeedback' %}" class="btn btn-outline-success">Give Review</a>
+      </div>
+    </div>
+  </div>
+</div>
+<h4>Reviews for {{ product.name }}({{ feedback_count }})</h4>
 {% for feedbacks in feedback_list %}
 <br>
 <div class="card" style="width: 100%; margin: 0 auto; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
