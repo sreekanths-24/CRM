@@ -5,6 +5,8 @@ import datetime
 from .models import * 
 from .utils import cookieCart, cartData, guestOrder
 from django.db.models import Q
+from django.shortcuts import get_object_or_404
+from features.models import FeedbackTable
 
 
 def store(request):
@@ -110,7 +112,13 @@ def previous_order(request):
     else:
         return render(request, 'store/previous_purchase.html')
 
-
+def review(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    feedback_list = FeedbackTable.objects.filter(product=product.name)
+    context = {
+        'feedback_list': feedback_list,
+    }
+    return render(request, 'store/reviews.html', context)
 # def previous_order(request):
 # 	if 'q1' in request.GET:
 # 		q1 = request.GET['q1']

@@ -10,5 +10,5 @@ urlpatterns = [
 	path('previous_order/', views.previous_order, name="previous_order"),
 	path('update_item/', views.updateItem, name="update_item"),
 	path('process_order/', views.processOrder, name="process_order"),
-
+	path('product/<int:pk>/review/', views.review, name="review"),
 ]

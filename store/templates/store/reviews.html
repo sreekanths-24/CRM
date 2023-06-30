@@ -1,0 +1,16 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<h1>Reviews</h1>
+{% for feedbacks in feedback_list %}
+<br>
+<div class="card" style="width: 100%; margin: 0 auto; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <div class="card-body">
+      <h5 class="card-title">{{ feedbacks.name }}</h5>
+      <p class="card-text">{{ feedbacks.feedback }}</p>
+    </div>
+</div>
+{% endfor %}
+<br>
+
+{% endblock content %}
