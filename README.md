@@ -6,6 +6,7 @@
 1. [How to install and setup this project in your system](#how-to-install-and-setup-this-project-in-your-system)
 1. [How to contribute](#how-to-contribute)
 1. [Live Demo](#live-demo)
+1. [Hosting](#hosting)
 
 ---
 
@@ -155,5 +156,11 @@ username = Admin1
 password = qwerty@123
 
 ---
+# Hosting
 
+Cloudinary hosting :- https://youtu.be/fQo9ivqX4xs
+<br> Vercel hosting :- https://youtu.be/I5x8lAVQ8QQ
+<br> Postgresql :- https://youtu.be/w5DRzbQ0Suo
+
+---
 # Thank You
