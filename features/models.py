@@ -1,10 +1,11 @@
 from django.db import models
-
+from store.models import Product
 # Create your models here.
 class FeedbackTable(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     feedback = models.TextField()
+    product = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

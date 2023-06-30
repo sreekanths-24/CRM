@@ -9,16 +9,18 @@ from django.db.models import Sum
 
 # Create your views here.
 def sendfeedback(request):
+	all_products = Product.objects.all()
 	if request.method == "POST":
 		name = request.POST["yourname"]
 		email = request.POST["youremail"]
+		product = request.POST["yourproduct"]
 		feedback = request.POST["userfeedbacktake"]
 		#print(f'name = {name} email = {email} feedback = {feedback}')
-		obj = FeedbackTable(name=name, email=email, feedback=feedback)
+		obj = FeedbackTable(name=name, email=email, feedback=feedback, product=product)
 		obj.save()
 		# messages.success(request, "feedback submitted sucessfully")
 		return redirect('store')
-	return render(request, 'give_feedback.html')
+	return render(request, 'give_feedback.html', {'all_products':all_products})
 
 def viewfeedback(request):
     feedback_list = FeedbackTable.objects.order_by('-created_at')

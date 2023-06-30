@@ -150,8 +150,10 @@ CRM :- https://ecomm-crm.vercel.app/crm
 <br>
 login :- 
 <br>
-username = admin 
+username = Admin1 
 <br>
-password = qwerty123
+password = qwerty@123
+
+---
 
 # Thank You

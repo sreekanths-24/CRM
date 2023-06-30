@@ -13,6 +13,17 @@
     <div class="mb-3">
         <input type="email" class="form-control" name="youremail" placeholder="Your Email" required>
     </div>
+	<label for="products">Product:</label>
+	<select id="products" name="yourproduct">
+		<option value="other" >Other</option>
+
+		{% for product in all_products %}
+			<option value="{{ product }}">{{ product }}</option>
+		{% endfor %}
+		
+	</select>
+	<br>
+	<br>
 	<div class="mb-3">
         <textarea name="userfeedbacktake" placeholder="Your Reply" required id="suher"></textarea>
                     
