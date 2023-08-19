@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z+ksf@)0d^qojbh4rnp4b1to$hq&*tt(3bs$gf(3i267g$k9ln'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-#.vercel.app
-ALLOWED_HOSTS = ['.vercel.app','.now.sh', '127.0.0.1']
+DEBUG = True
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainpart',
     'features',
-    'cloudinary',
     'store.apps.StoreConfig',
 ]
 
@@ -82,12 +78,8 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'qZvDX1dQSAF3UJI7rhBA',
-        'HOST': 'containers-us-west-65.railway.app',
-        'PORT': '5848',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -134,19 +126,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-
-
-
-# Cloudinary settings
-
-cloudinary.config(
-    cloud_name = 'djxuc9i8b',
-    api_key = '153647374615183',
-    api_secret = 'JRMswSw3wtiQeuKlst3zCaZmO0U'
-
-)
