@@ -10,12 +10,12 @@
                 <p id="description_{{ product.id }}" style="display: none;">{{ product.description }}</p>
                 <hr>
 
-                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-primary add-btn update-cart">Add to Wishlist</button>
-                <button onclick="toggleDescription('{{ product.id }}')" class="btn btn-outline-dark">View</button>
-                <a href="{% url 'review' pk=product.pk %}" class="btn btn-outline-info">Reviews</a>
-                <hr>
+                <!-- <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-primary add-btn update-cart">Add to Wishlist</button> -->
+                <!-- <button onclick="toggleDescription('{{ product.id }}')" class="btn btn-outline-dark">View</button> -->
+                <!-- <hr> -->
                 <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-success add-btn update-cart">Buy Now</button>
+                <a href="{% url 'review' pk=product.pk %}" class="btn btn-outline-info">Reviews</a>
+                <!-- <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-success add-btn update-cart">Buy Now</button> -->
                 <!-- <a href="{% url 'checkout' %}" onclick="buyNow('{{ product.id }}')" class="btn btn-outline-success add-btn">Buy now</a> -->
                 <h4 style="float: right;"><strong>Rs {{ product.price }}</strong></h4>
             </div>
